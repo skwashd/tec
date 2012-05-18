@@ -1,0 +1,8 @@
+name = Technocrat Entity Controller
+description = Generic entity controller class derived from the Drupal Commerce controller.
+core = 7.x
+
+files[] = includes/tec.controller.inc
+
+dependencies[] = entity
+
