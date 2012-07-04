@@ -7,7 +7,7 @@
  * Copied from DrupalCommerceEntityController.
  */
 
-class TecController extends DrupalDefaultEntityController implements EntityAPIControllerInterface {
+class TecController extends EntityAPIController implements EntityAPIControllerInterface {
 
   /**
    * Stores our transaction object, necessary for pessimistic locking to work.
@@ -325,8 +325,10 @@ class TecController extends DrupalDefaultEntityController implements EntityAPICo
       $entity->content += field_attach_view($this->entityType, $entity, $view_mode, $langcode);
     }
 
-    // Invoke hook_ENTITY_view() to allow modules to add their additions.
-    rules_invoke_all($this->entityType . '_view', $entity, $view_mode, $langcode);
+    if (module_exists('rules')) {
+      // Invoke hook_ENTITY_view() to allow modules to add their additions.
+      rules_invoke_all($this->entityType . '_view', $entity, $view_mode, $langcode);
+    }
 
     // Invoke the more generic hook_entity_view() to allow the same.
     module_invoke_all('entity_view', $entity, $this->entityType, $view_mode, $langcode);
