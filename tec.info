@@ -3,6 +3,7 @@ description = Generic entity controller class derived from the Drupal Commerce c
 core = 7.x
 
 files[] = includes/tec.controller.inc
+files[] = includes/tec.controller.exportable.inc
 
 dependencies[] = entity
 
