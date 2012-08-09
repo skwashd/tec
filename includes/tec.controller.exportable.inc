@@ -16,7 +16,7 @@ class TecControllerExportable extends TecController {
    */
   public function export($entity, $prefix = '') {
     $vars = get_object_vars($entity);
-    unset($vars['is_new']);
+    unset($vars['is_new'], $vars['created'], $vars['modified'], $vars['status']);
     return entity_var_json_export($vars, $prefix);
   }
 
